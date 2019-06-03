@@ -1,0 +1,12 @@
+﻿@model Procrastinator.Models.CourseSelectionViewModel
+
+@{
+    ViewBag.Title = "Schedule";
+}
+<h2>@ViewBag.Title.</h2>
+
+<p>Schedule</p>
+
+@Html.DropDownListFor(model => model.SubjectTypes, new SelectList(Model.SubjectTypes, "SubjectTypeId", "Subject"), "- Please Select -")
+
+@Html.DropDownListFor(model => model.Courses, new SelectList(Model.Courses, "Id", "Description"), "- Please Select -")
