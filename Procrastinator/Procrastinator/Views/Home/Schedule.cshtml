@@ -1,12 +1,77 @@
 ﻿@model Procrastinator.Models.CourseSelectionViewModel
-
 @{
     ViewBag.Title = "Schedule";
 }
-<h2>@ViewBag.Title.</h2>
+<head>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
 
-<p>Schedule</p>
+<body>
+    <div id="container">
 
-@Html.DropDownListFor(model => model.SubjectTypes, new SelectList(Model.SubjectTypes, "SubjectTypeId", "Subject"), "- Please Select -")
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Courses</a></li>
+            <li><a data-toggle="tab" href="#menu1">Schedule</a></li>
+        </ul>
 
-@Html.DropDownListFor(model => model.Courses, new SelectList(Model.Courses, "Id", "Description"), "- Please Select -")
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h4>Add Courses:</h4>
+                <div id="rowContainer" class="form-control">
+                    @Html.DropDownListFor(m => m.SelectedSubjectType, new SelectList(Model.SubjectTypes, "SubjectTypeId", "Subject"), "- Please Select -", new { @id = "subject"})
+                    @Html.DropDownListFor(m => m.Courses, new SelectList(Model.Courses, "Id", "Description"), "- Please Select -", new { @id = "course"})
+                    <span id="remove" class="glyphicon glyphicon-minus"></span>
+                    <span id="add" class="glyphicon glyphicon-plus"></span>
+                </div>
+                <input type="hidden" id="end">
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h4>Add Events to your schedule:</h4>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $("[name='SelectedSubjectType']").on("change", function () {
+            debugger;
+            var index = jQuery(this).attr("id").replace("subject", "");
+            var selectedSubject = $(this).find(":selected").val();
+
+            $.ajax({
+                type: 'POST',
+                url: "/Courses/GetCourses",
+                dataType: "json",
+                data: { subjectTypeId: selectedSubject },
+                success: function (data) {
+                    var $dropdown = $("#course" + index);
+                    $dropdown.empty();
+                    $.each(data, function () {
+                        $dropdown.append($("<option />").val(this.Id).text(this.Description));
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("some error");
+                }
+            });
+        });
+    });
+
+    var index = 2;
+    $("#add").click(function () {
+        var newRow = $("#rowContainer").clone(true, true);
+        jQuery('#subject', newRow).prop('id', 'subject' + index);
+        jQuery('#course', newRow).attr('id', 'course' + index);
+        jQuery('#remove', newRow).attr('id', 'remove' + index);
+
+        jQuery(newRow).insertBefore('#end');
+        $('#subject' + index).change();
+        index++;
+    });
+
+    $('body').on('click', '.glyphicon-minus', function () {
+        debugger;
+        $(this).parent('div').remove();
+    });
+</script>
+
