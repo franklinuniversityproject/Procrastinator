@@ -33,10 +33,10 @@ namespace Procrastinator.Controllers
                 courses = db.Courses.Where(x => x.SubjectTypeId == subjectTypeId).ToList();
             }
             else
+            {
                 courses = db.Courses.ToList();
-
-            //JavaScriptSerializer serializer = new JavaScriptSerializer();
-            //var test = serializer.Serialize(courses);
+            }
+           
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
 
