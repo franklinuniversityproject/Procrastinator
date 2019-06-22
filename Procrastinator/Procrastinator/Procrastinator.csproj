@@ -133,6 +133,7 @@
     <Compile Include="Models\Course.cs">
       <DependentUpon>CourseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CourseData.cs" />
     <Compile Include="Models\CourseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +154,7 @@
       <DependentUpon>CourseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\CourseBO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
