@@ -51,7 +51,6 @@ namespace Procrastinator.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Events()
         {
             return View();

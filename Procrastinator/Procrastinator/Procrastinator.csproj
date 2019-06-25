@@ -150,6 +150,7 @@
       <DependentUpon>CourseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\CourseSelectionViewModel.cs" />
+    <Compile Include="Models\EventSelectionViewModel.cs" />
     <Compile Include="Models\SubjectType.cs">
       <DependentUpon>CourseModel.tt</DependentUpon>
     </Compile>
