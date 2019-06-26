@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="Summer2019Model.Course" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Summer2019Model.SubjectType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="Summer2019Model.FK_SubjectType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Summer2019Model.EventType" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

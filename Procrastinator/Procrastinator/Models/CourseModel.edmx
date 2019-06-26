@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Summer2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Summer2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +15,14 @@
           <Property Name="SubjectTypeId" Type="int" Nullable="false" />
           <Property Name="CreditHours" Type="int" Nullable="false" />
           <Property Name="DifficultyRating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SubjectType">
           <Key>
@@ -38,14 +46,14 @@
         </Association>
         <EntityContainer Name="Summer2019ModelStoreContainer">
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubjectType" EntityType="Self.SubjectType" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_SubjectType" Association="Self.FK_SubjectType">
             <End Role="SubjectType" EntitySet="SubjectType" />
             <End Role="Course" EntitySet="Course" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Summer2019Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -89,7 +97,16 @@
             <End Role="SubjectType" EntitySet="SubjectTypes" />
             <End Role="Course" EntitySet="Courses" />
           </AssociationSet>
+          <EntitySet Name="EventTypes" EntityType="Summer2019Model.EventType" />
         </EntityContainer>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -114,6 +131,15 @@
                 <ScalarProperty Name="SubjectTypeId" ColumnName="SubjectTypeId" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="SubjectShort" ColumnName="SubjectShort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypes">
+            <EntityTypeMapping TypeName="Summer2019Model.EventType">
+              <MappingFragment StoreEntitySet="EventType">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

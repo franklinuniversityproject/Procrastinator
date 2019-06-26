@@ -10,7 +10,7 @@ namespace Procrastinator.Models
         private Summer2019 db = new Summer2019();
 
         public int SelectedSubjectType { get; set; }
-
+        public List<int> SelectedCourses { get; set; }
         public List<Course> Courses { get; set; }
         public List<SubjectType> SubjectTypes { get; set; }
 

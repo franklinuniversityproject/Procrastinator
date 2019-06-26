@@ -27,5 +27,6 @@ namespace Procrastinator.Models
     
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<SubjectType> SubjectTypes { get; set; }
+        public virtual DbSet<EventType> EventTypes { get; set; }
     }
 }

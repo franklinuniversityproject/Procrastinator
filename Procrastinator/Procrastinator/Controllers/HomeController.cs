@@ -51,9 +51,10 @@ namespace Procrastinator.Controllers
             return View();
         }
 
-        public ActionResult Events()
+        public ActionResult Events(CourseSelectionViewModel courses)
         {
-            return View();
+            var model = new EventSelectionViewModel(courses);
+            return View(model);
         }
     }
 }
