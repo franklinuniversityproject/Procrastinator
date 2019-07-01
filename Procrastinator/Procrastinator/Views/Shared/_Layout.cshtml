@@ -2,38 +2,54 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <!-- Topbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" style="color:#2B7A7B">
-        <div class="container" style="background-color:#2B7A7B">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="color:#2B7A7B">
-                    <li>@Html.ActionLink("Procrastinator", "Index", "Home", new { id = 1 }, new { @style = "color:#ffffff;" })</li>
-                    <li>@Html.ActionLink("Create", "Courses", "Home", new { id = 1 }, new { @style = "color:#ffffff;" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { id = 1 }, new { @style = "color:#ffffff;" })</li>
-                    <li>@Html.ActionLink("Lookup", "LookUp", "Home", new { id = 1 }, new { @style = "color:#ffffff;" })</li>
-                </ul>
+    <div class="main-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>
+                        <a class="navbar-brand" href="@Url.Action("Index", "Home")" data-0="line-height:90px;" data-300="line-height:50px;">
+                            Procrastinator
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-md-8">
+                    <div class="dropdown">
+                        <ul class="nav nav-pills">
+                            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("Courses", "Home")">Create</a></li>
+                            <li><a href="@Url.Action("Lookup", "Home")">Find</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    @RenderBody()
+    <footer>
+        <section id="footer" class="section footer">
+            <div class="container">
+                <div class="col-sm-12 align-center">
+                    <ul class="social-network social-circle">
+                        <li>&copy; Procrastinator</li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </footer>
 
-    <!-- footer -->
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Procrastinator</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("scripts", required: false)
 </body>
 </html>

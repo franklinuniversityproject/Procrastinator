@@ -22,7 +22,7 @@ $(function () {
                 $dropdown.empty();
                 $("#course" + index).append($("<option />").val('').text('Select a Course'));
                 $.each(data, function () {
-                    $dropdown.append($("<option />").val(this.Id).text(this.Description));
+                    $dropdown.append($("<option />").val(this.Id).text(this.CourseCode + ' ' + this.Description));
                 });
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

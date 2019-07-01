@@ -3,95 +3,99 @@
     ViewBag.Title = "Events";
 }
 
-<head>
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-</head>
-
 <body>
-    <h4>Add events to your schedule:</h4>
+    <div id="main-content">
+        <div class="container">
+            <h4>Add events to your schedule:</h4>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <label>Event</label>
-            </div>
-            <div class="col-md-1">
-                <label>Hours</label>
-            </div>
-            <div class="col-md-1">
-                <label>Minutes</label>
-            </div>
-            <div class="col-md-3">
-                <label>Weekdays</label>
-            </div>
-        </div>
-
-        <div class="row" id="eventContainer" style="display: none">
-            <div class="col-md-3">
-                <input list="eventtypes" id="eventSelector" class="form-control"/>
-                <datalist id="eventtypes">
-                    @foreach (var item in Model.EventTypes.Where(i => i.IsDefault == true))
-                    {
-                        <option value=@item.Description id="@item.Id"></option>
-                    }
-                </datalist>
-            </div>
-            <div class="col-md-1">
-                <input list="hours" id="hourSelector" class="form-control" />
-                <datalist id="hours">
-                    <option value=1></option>
-                    <option value=2></option>
-                    <option value=3></option>
-                    <option value=4></option>
-                    <option value=5></option>
-                    <option value=6></option>
-                    <option value=7></option>
-                    <option value=8></option>
-                </datalist>
-            </div>
-            <div class="col-md-1">
-                <input list="minutes" id="minuteSelector" class="form-control" />
-                <datalist id="minutes">
-                    <option value=5></option>
-                    <option value=10></option>
-                    <option value=15></option>
-                    <option value=20></option>
-                    <option value=25></option>
-                    <option value=30></option>
-                    <option value=35></option>
-                    <option value=40></option>
-                    <option value=45></option>
-                    <option value=50></option>
-                    <option value=55></option>
-                </datalist>
-            </div>
-            <div class="col-md-3">
-                <div id="weekdays" class="weekDays-selector">
-                    <input type="checkbox" id="weekday-mon" />
-                    <label for="weekday-mon">M</label>
-                    <input type="checkbox" id="weekday-tue" class="weekday" />
-                    <label for="weekday-tue">T</label>
-                    <input type="checkbox" id="weekday-wed" class="weekday" />
-                    <label for="weekday-wed">W</label>
-                    <input type="checkbox" id="weekday-thu" class="weekday" />
-                    <label for="weekday-thu">T</label>
-                    <input type="checkbox" id="weekday-fri" class="weekday" />
-                    <label for="weekday-fri">F</label>
-                    <input type="checkbox" id="weekday-sat" class="weekday" />
-                    <label for="weekday-sat">S</label>
-                    <input type="checkbox" id="weekday-sun" class="weekday" />
-                    <label for="weekday-sun">S</label>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <label>Event</label>
+                </div>
+                <div class="col-md-1">
+                    <label>Hours</label>
+                </div>
+                <div class="col-md-1">
+                    <label>Minutes</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Weekdays</label>
                 </div>
             </div>
-            <div class="col-md-1">
-                <span class="glyphicon glyphicon-trash form-control-static" style="font-size:20px"></span>
+
+            <div class="row" id="eventContainer" style="display: none">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <input list="eventtypes" id="eventSelector" class="form-control" />
+                    <datalist id="eventtypes">
+                        @foreach (var item in Model.EventTypes.Where(i => i.IsDefault == true))
+                        {
+                            <option value=@item.Description id="@item.Id"></option>
+                        }
+                    </datalist>
+                </div>
+                <div class="col-md-1">
+                    <input list="hours" id="hourSelector" class="form-control" />
+                    <datalist id="hours">
+                        <option value=1></option>
+                        <option value=2></option>
+                        <option value=3></option>
+                        <option value=4></option>
+                        <option value=5></option>
+                        <option value=6></option>
+                        <option value=7></option>
+                        <option value=8></option>
+                    </datalist>
+                </div>
+                <div class="col-md-1">
+                    <input list="minutes" id="minuteSelector" class="form-control" />
+                    <datalist id="minutes">
+                        <option value=5></option>
+                        <option value=10></option>
+                        <option value=15></option>
+                        <option value=20></option>
+                        <option value=25></option>
+                        <option value=30></option>
+                        <option value=35></option>
+                        <option value=40></option>
+                        <option value=45></option>
+                        <option value=50></option>
+                        <option value=55></option>
+                    </datalist>
+                </div>
+                <div class="col-md-3">
+                    <div id="weekdays" class="weekDays-selector">
+                        <input type="checkbox" id="weekday-mon" />
+                        <label for="weekday-mon">M</label>
+                        <input type="checkbox" id="weekday-tue" class="weekday" />
+                        <label for="weekday-tue">T</label>
+                        <input type="checkbox" id="weekday-wed" class="weekday" />
+                        <label for="weekday-wed">W</label>
+                        <input type="checkbox" id="weekday-thu" class="weekday" />
+                        <label for="weekday-thu">T</label>
+                        <input type="checkbox" id="weekday-fri" class="weekday" />
+                        <label for="weekday-fri">F</label>
+                        <input type="checkbox" id="weekday-sat" class="weekday" />
+                        <label for="weekday-sat">S</label>
+                        <input type="checkbox" id="weekday-sun" class="weekday" />
+                        <label for="weekday-sun">S</label>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <span class="glyphicon glyphicon-trash form-control-static" style="font-size:20px"></span>
+                </div>
             </div>
-        </div>
-        <div class="row" id="end">
-            <div class="col-md-2">
-                <input type="hidden" id="end">
-                <button type="button" id="addEvent" class="btn btn-primary">Add Event</button>
-                <button type="submit" class="btn btn-primary">Create</button>
+            <div class="row" id="end">
+                <div class="form-group">
+                    <input type="hidden" id="end">
+                    <button type="button" id="addEvent" class="btn btn-primary">Add Event</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            <hr />
+            <div class="slider text-center">
+                <img src="~/img/quote.png" alt="quote" height="200" />
             </div>
         </div>
     </div>

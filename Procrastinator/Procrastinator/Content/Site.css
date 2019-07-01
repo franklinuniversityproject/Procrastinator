@@ -3,6 +3,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #3AAFA9;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -39,6 +40,11 @@ textarea {
     padding-bottom: 10px;
     padding-left: 4px;
     padding-left: 4px;
+}
+
+#navbar {
+    color: #ffffff;
+    background-color: #2B7A7B;
 }
 
 .weekDays-selector input[type=checkbox] + label {

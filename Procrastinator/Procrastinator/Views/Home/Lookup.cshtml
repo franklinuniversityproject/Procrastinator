@@ -1,10 +1,22 @@
 ﻿@{
     ViewBag.Ttile = "Lookup";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    
-</address>
+<body>
+    <div id="main-content">
+        <div class="container">
+            <h2>Find Existing Tasks: </h2>
+            <form class="form-inline" role="form">
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="inputSuccess4"></label>
+                    <input type="text" class="form-control" maxlength="10" required="true" id="inputSuccess4">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </form>
+        </div>
+        <hr />
+        <div class="slider text-center">
+            <img src="~/img/quote.png" alt="quote" height="200" />
+        </div>
+    </div>
+</body>
 
